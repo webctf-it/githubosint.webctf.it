@@ -1,0 +1,31 @@
+version: "3.5"
+services:
+    node:
+      build: .
+      restart: always
+      read_only: true
+      # PAY ATTENTION: SOCK FOLDER NEEDS TO HAVE SETGID AND TO BE CHOWNED TO WWW-DATA GROUP. OTHER SETTINGS ARE NOT SECURE!
+      volumes:
+          - ./sock/:/sock/:rw
+      environment:
+          - FLAG=flag{fake_flag}
+      networks:
+          - default
+          - nginx_nolog
+      logging:
+          driver: "json-file"
+          options:
+              max-file: "1"
+              max-size: "20m"
+      #healthcheck:
+      #    test: "health_checker"
+      #    timeout: 15s
+      #    interval: 2m30s
+      #    retries: 2
+networks:
+    default:
+        driver_opts:
+            com.docker.network.bridge.name: githubosint
+        internal: true
+    nginx_nolog:
+        external: true

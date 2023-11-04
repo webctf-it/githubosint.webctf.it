@@ -1,0 +1,6 @@
+# Sock folder content
+sock/*
+!sock/.gitkeep
+
+# Docker-compose override
+docker-compose.override.yml
